@@ -1,0 +1,237 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Bishnu 💙 Gahana</title>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<style>
+body {
+    margin: 0;
+    height: 100vh;
+    background: linear-gradient(135deg, #0a1f44, #ff9a9e);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    overflow: hidden;
+    font-family: 'Segoe UI', sans-serif;
+}
+
+.box {
+    background: white;
+    padding: 20px;
+    border-radius: 25px;
+    text-align: center;
+    width: 95%;
+    max-width: 380px;
+    box-shadow: 0 15px 30px rgba(0,0,0,0.3);
+}
+
+h1 { color: #0a1f44; }
+
+p { font-size: 15px; color: #444; }
+
+.heart {
+    font-size: 55px;
+    animation: beat 1s infinite;
+    margin-top: 50px;
+}
+
+@keyframes beat {
+    0% { transform: scale(1); }
+    50% { transform: scale(1.3); }
+    100% { transform: scale(1); }
+}
+
+.slideshow img {
+    width: 110px;
+    height: 110px;
+    border-radius: 50%;
+    border: 4px solid #ff9a9e;
+    object-fit: cover;
+    display: none;
+}
+
+.slideshow img.active { display: inline-block; }
+
+.buttons button {
+    padding: 10px 22px;
+    border-radius: 25px;
+    border: none;
+    margin: 5px;
+    font-size: 15px;
+}
+
+#yes { background: #0a1f44; color: white; }
+#no { background: #ddd; }
+
+#yes:hover { transform: scale(1.1); }
+
+.float {
+    position: absolute;
+    bottom: -40px;
+    font-size: 22px;
+    animation: floatUp 6s linear infinite;
+}
+
+@keyframes floatUp {
+    to { transform: translateY(-110vh); }
+}
+
+.countdown { color: #ff4d6d; font-weight: bold; }
+
+.card {
+  position: relative; /* important */
+}
+
+.play-music {
+  position: absolute;
+  top: 15px;
+  left: 50%;
+  transform: translateX(-50%);
+  
+  background: #E6DCDA;
+  color: black;
+  border: none;
+  padding: 8px 14px;
+  border-radius: 20px;
+  font-size: 14px;
+  cursor: pointer;
+}
+
+.play-music:hover {
+  background: #ff4d6d;
+}
+
+
+
+
+
+</style>
+</head>
+
+<body>
+
+<!-- Music -->
+<div class="card">
+<button  class="play-music" onclick="document.getElementById('mysong').play()">Play Music 🎵</button>
+
+<audio id="mysong" loop>
+  <source src="sahara.mp3" type="audio/mpeg">
+</audio>
+<div>
+
+
+<div class="box">
+    <div class="heart">💙</div>
+    <h1>Bishnu ❤️</h1>
+    <p style="font-family: cursive; color: #fc038c;">From your Wife &#128141;</p>
+
+    <!-- Photo slideshow -->
+    <div class="slideshow">
+        <img src="photo1.jpg" class="active">
+        <img src="photo2.jpeg">
+        <img src="photo3.jpg">
+        <img src="photo4.jpg">
+        <img src="photo5.jpg">
+        <img src="photo6.jpg">
+        <img src="photo7.jpg">
+        <img src="photo8.jpg">
+        <img src="photo9.jpg">
+        <img src="photo10.jpeg">
+
+    </div>
+
+    <!-- Love letter -->
+    <p style="font-family: cursive; font-size: 16px;">
+      Bishnu, you are my love and my forever &#10084;.
+      I am sorry for hurting you &#128557;.
+      I  promise to change, to  listen whatever you say and to love you the way you want.
+      Having you in my life  is a blessing, and I choose you again and again.
+      I love you endlessly. 💖
+    </p>
+
+    <p><strong>Will you be my Valentine?&#127801;</strong></p>
+    <p class="countdown" id="countdown"></p>
+
+    <div class="buttons">
+        <button id="yes" onclick="sayYes()">Yes 💖</button>
+        <button id="no" onclick="changeNo()">No 🙈</button>
+    </div>
+</div>
+
+<script>
+/* Slideshow */
+let slides = document.querySelectorAll(".slideshow img");
+let idx = 0;
+setInterval(() => {
+    slides[idx].classList.remove("active");
+    idx = (idx + 1) % slides.length;
+    slides[idx].classList.add("active");
+}, 2000);
+
+/* No button */
+const noTexts = ["Please don't say No","Are you sure? 😏","Think again 💕","You love me 😘","Just say YES 💖"];
+let n = 0;
+function changeNo(){
+  no.textContent = noTexts[n];
+  n = (n+1)%noTexts.length;
+}
+
+/* Fireworks + Yes */
+function sayYes(){
+  for(let i=0;i<50;i++){
+    let spark = document.createElement("div");
+    spark.style.position="fixed";
+    spark.style.left=Math.random()*innerWidth+"px";
+    spark.style.top=Math.random()*innerHeight+"px";
+    spark.style.width="6px";
+    spark.style.height="6px";
+    spark.style.background=["#ff4d6d","#0a1f44","#ffd1dc"][Math.floor(Math.random()*3)];
+    spark.style.borderRadius="50%";
+    spark.style.animation="pop 1s ease-out";
+    document.body.appendChild(spark);
+    setTimeout(()=>spark.remove(),1000);
+  }
+
+  setTimeout(()=>{
+    document.body.innerHTML=`
+      <div style="height:100vh;display:flex;flex-direction:column;
+      justify-content:center;align-items:center;
+      background:linear-gradient(135deg,#0a1f44,#ff9a9e);color:white;text-align:center;">
+      <h1 style="color:#ffcc99;">Yaay! Hurray!
+      Bishnu said YES! &#129395;</h1>
+      <p style="color:white; font-size:25px;font-family:cursive">Forever yours, Wife ❤️</p>
+      <div style="font-size:100px;">&#127881;
+&#127882;&#127878;</div>
+<img src='H.jpg'>
+      </div>`;
+  },1200);
+}
+
+/* Fireworks animation */
+const st=document.createElement("style");
+st.innerHTML="@keyframes pop{to{transform:scale(3);opacity:0}}";
+document.head.appendChild(st);
+
+/* Floating hearts */
+setInterval(()=>{
+ let h=document.createElement("div");
+ h.className="float";h.innerHTML="💙 ❤️";
+ h.style.left=Math.random()*innerWidth+"px";
+ document.body.appendChild(h);
+ setTimeout(()=>h.remove(),6000);
+},500);
+
+/* Countdown */
+function updateCountdown(){
+ const v=new Date(new Date().getFullYear(),1,15);
+ const d=Math.floor((v-new Date())/(1000*60*60*24));
+ countdown.textContent=d>=0?d+" days left for Valentine 💙":"Happy Valentine’s Day 💘";
+}
+updateCountdown();
+</script>
+
+</body>
+</html>
